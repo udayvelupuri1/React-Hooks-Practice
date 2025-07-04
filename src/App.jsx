@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 
-// ////Example of UseState Hook
+// ////1)Example of UseState Hook
 
 // // This hook is used to manage state in functional components.
 // // It allows you to add state to a functional component without converting it to a class component.
@@ -31,6 +31,21 @@ import React from "react";
 // };
 
 // export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -120,7 +135,7 @@ import React from "react";
 //     return () => {
 //       clearInterval(timer);
 //     };
-//   }); 
+//   });
 //   return (
 //     <div>
 //       <h3>{time} in seconds!</h3>
@@ -144,16 +159,236 @@ import React from "react";
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ////3) useContext Hook
 // The useContext hook is used to access the context value in a functional component.
 //create context require 3 simple steps:
+//useContext is used to manage global state in a React application.
+// It allows you to share data between components without having to pass props down through every level of the component tree.
+// This is useful for managing global state, such as user authentication, theme settings,
+// or any other data that needs to be accessed by multiple components in your application.
+// It is a simpler alternative to using Redux or other state management libraries for smaller applications.
+// It is used to access the context value in a functional component.
+// It takes the context object created by createContext as an argument and returns the current context value
+
 // creating the context
 //providing the context
 // consuming the context
-export default function App() {
-  return (
-    <div>
-      <h3></h3>
-    </div>
-  )
-}
+// import MainComponent from "./MainComponent";
+// export const LoginContext = React.createContext();
+// import LoginContextProvider from "./context/LoginContextProvider";
+
+// export default function App() {
+//   return (
+//     <LoginContextProvider>
+//       <MainComponent />
+//     </LoginContextProvider>
+//   )
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+////4) useRef Hook
+
+////UseRef allows us to access DOM elements.
+////for creating mutable variables which will not re-render the component.
+
+//example of useRef to create mutable variables that do not cause re-renders
+
+// const App = () => {
+//     const [name, setName] = React.useState("");
+//     const count = React.useRef(0);
+//     React.useEffect(() =>{count.current = count.current + 1});
+//     return(
+//         <div>
+//             <input type = 'text' onChange = {(e)=> setName(e.target.value)} />
+//             <h2> Name : {name}</h2>
+//             <h2> Count : {count.current}</h2>
+//         </div>
+//     )
+// }
+
+// export default App
+
+//example of useRef to access DOM elements
+
+// const App = () => {
+//     const inputEle = React.useRef();
+//     const handleClick = () => {
+//         console.log("Function Run")
+//         inputEle.current.style.width = "300px";
+//         inputEle.current.focus();
+//     }
+//     return(
+//         <div>
+//             <input type = 'text' ref = {inputEle} />
+//             <button onClick = {handleClick}>Click Here</button>
+//         </div>
+//     )
+// }
+
+// export default App
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ////5) useReducer Hook/
+// //// useReducer is a hook that allows you to manage complex state logic in functional components.(state management)
+// // It is an alternative to useState and is particularly useful when you have multiple state variables that depend on each other or when the state logic is complex.
+
+// function App() {
+//   const [state, dispatch] = React.useReducer(reducer, initialState); //syntax: const [state, dispatch] = useReducer(reducer, initialState);
+
+//   const increment = () => {
+//     dispatch({ type: ACTION.INCREMENT });
+//   };
+//   const decrement = () => {
+//     dispatch({ type: ACTION.DECREMENT });
+//   };
+//   return (
+//     <div>
+//       <h1>Count: {state.count}</h1>
+//       <button onClick={increment}>Increment</button>
+//       <button onClick={decrement}>Decrement</button>
+//     </div>
+//   );
+// }
+
+// export default App;
+
+// const ACTION = {
+//   INCREMENT: "increment",
+//   DECREMENT: "decrement",
+// };
+
+// const initialState = { count: 0 };
+
+// const reducer = (state, action) => {
+//   switch (action.type) {
+//     case ACTION.INCREMENT:
+//       return { count: state.count + 1 };
+//     case ACTION.DECREMENT:
+//       return { count: state.count - 1 };
+//     default:
+//       return state;
+//   }
+// };
+
+
+
+
+
+
+
+
+
+
+
+
+
+//////6) uselAYout Hook
+
+//useLayoutEffect works exactly the same as useEffect(Also the same Syntax).
+//But the difference is "When it's run".
+//useEffect Runs After te DOM has been painted.
+//useLayoutEffect Runs Before the DOM has been painted on the browser.
+//whenever we want to run code before the DOM is printed (like height,width, anything related to DOM or layout),
+//it runs synchronously after all DOM mutations. (line by line execution)
+
+// React calculate this component -> useLayoutEffect -> react prints all elements on the browser -> useEffect
+
+
+// export default function App() {
+//     const [toggle, setToggle] = React.useState(false);
+//     const textRef = React.useRef();
+//     React.useLayoutEffect(() =>{
+//         if (textRef.current != null){
+//             const dimension = textRef.current.getBoundingClientRect();
+//             textRef.current.style.paddingTop = `${dimension.width}px`;
+
+//         }
+//     },[toggle])
+//   return (
+//     <div>
+//         <button onClick={() => setToggle(!toggle)}>Toggle</button>
+//         {toggle && <h1 ref={textRef}>Hello World</h1>}
+//     </div>
+//   )
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//////7) useMemo Hook
+// useMemo is a hook that allows you to memoize expensive calculations in functional components.
+
+/////8) useCallback Hook
+
+/////9) custom Hooks
+
