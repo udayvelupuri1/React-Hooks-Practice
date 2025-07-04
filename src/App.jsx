@@ -340,7 +340,7 @@ import React, { useState } from "react";
 
 
 
-//////6) uselAYout Hook
+//////6) useLayout Hook
 
 //useLayoutEffect works exactly the same as useEffect(Also the same Syntax).
 //But the difference is "When it's run".
